@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Visual Budget</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+
+	<h3>Check</h3>
+
+	<input id="check" type="text" name=""><br>
+	
+	<input class="freq" id="monthly" type="radio" name="frequency"  onclick="handlers.visualizeBudget()">
+	<label class="freq" for="monthly">Monthly</label>
+	<input class="freq" id="bi-weekly" type="radio" name="frequency" onclick="handlers.visualizeBudget()">
+	<label class="freq" for="bi-weekly">Bi-Weekly</label>
+	<input class="freq" id="weekly" type="radio" name="frequency" onclick="handlers.visualizeBudget()">
+	<label class="freq" for="weekly">Weekly</label>
+
+  <h3>Add your monthly expenses</h3>
+  <h4>Expense/Cost or Percentage</h4>
+  <input id="expenseName" type="text" name="" placeholder="Expense"><br>
+  <input id="expenseCost" type="text" name="" placeholder="Cost or percentage"><br><br>
+  
+
+  <button onclick="handlers.addEditExpense()">Add</button>
+  <button onclick="handlers.deleteExpense()">Remove</button>
+
+  <ul>
+  	
+  </ul>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

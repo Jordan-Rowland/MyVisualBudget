@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+  background-color: #3ECA3B;
+}
+
+ul {
+  /*display: flex;*/
+  width: 125px;
+  margin: 20px auto;
+  text-align: right;
+  list-style-type: none;
+  border: 2px solid black;
+}
