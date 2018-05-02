@@ -4,10 +4,10 @@ body {
 }
 
 ul {
-  /*display: flex;*/
-  width: 125px;
+  width: 250px;
   margin: 20px auto;
-  text-align: right;
+  text-align: left;
   list-style-type: none;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
+  padding: 0, auto;
 }

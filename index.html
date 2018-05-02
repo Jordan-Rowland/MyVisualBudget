@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>My Visual Budget</title>
-  <link rel="stylesheet" type="text/css" href="index.css">
-</head>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>My Visual Budget</title>
+  </head>
 
-<body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
 
-	<h3>Check</h3>
 
-	<input id="check" type="text" name=""><br>
-	
-	<input class="freq" id="monthly" type="radio" name="frequency"  onclick="handlers.visualizeBudget()">
-	<label class="freq" for="monthly">Monthly</label>
-	<input class="freq" id="bi-weekly" type="radio" name="frequency" onclick="handlers.visualizeBudget()">
-	<label class="freq" for="bi-weekly">Bi-Weekly</label>
-	<input class="freq" id="weekly" type="radio" name="frequency" onclick="handlers.visualizeBudget()">
-	<label class="freq" for="weekly">Weekly</label>
+          <h3>Check</h3>
 
-  <h3>Add your monthly expenses</h3>
-  <h4>Expense/Cost or Percentage</h4>
-  <input id="expenseName" type="text" name="" placeholder="Expense"><br>
-  <input id="expenseCost" type="text" name="" placeholder="Cost or percentage"><br><br>
-  
+          <input id="check" type="text" value="1237">
+          <br>
 
-  <button onclick="handlers.addEditExpense()">Add</button>
-  <button onclick="handlers.deleteExpense()">Remove</button>
+          <input class="freq" id="monthly" type="radio" name="frequency">
+          <label class="freq" for="monthly">Monthly </label>
+          <input class="freq" id="bi-weekly" type="radio" name="frequency">
+          <label class="freq" for="bi-weekly">Bi-Weekly </label>
+          <input class="freq" id="weekly" type="radio" name="frequency">
+          <label class="freq" for="weekly">Weekly </label>
 
-  <ul>
-  	
-  </ul>
+          <h3>Add your Monthly expenses</h3>
+          <h4>Expense/Cost or Percentage</h4>
+          <input id="expenseName" type="text" placeholder="Expense">
+          <br>
+          <input id="expenseCost" type="text" placeholder="Cost or percentage">
+          <br>
+          <input id="percentage" type="checkbox"> 
+          <label for="percentage">Percentage</label>
+          <br>
+          <br>
 
-  <script type="text/javascript" src="script.js"></script>
-</body>
+          <button id="add" class="btn">Add</button>
+          <button id="remove" class="btn">Remove</button>
+
+          <ul>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+
+</html>
 
 </html>
