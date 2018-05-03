@@ -46,14 +46,6 @@ class Store {
   }
 }
 
-/* Cleaned up code, created function to check if 'Percentage' box is checked */
-function percentageChecked() {
-  if (percentage.checked) {
-    return true;
-  }
-  return false;
-}
-
 let check = document.querySelector('#check');
 let monthly = document.querySelector('#monthly');
 let biWeekly = document.querySelector('#bi-weekly');
@@ -82,7 +74,7 @@ let budget = {
           }
         }
         expense = new Expense(expenseName.value, Number(
-          expenseCost.value), percentageChecked())
+          expenseCost.value), percentage.checked)
       }
 
       expenseName.value = ''
@@ -130,7 +122,7 @@ view = {
       /* Displays different value depending on frequency of check, precentages stay the same */
       if (budget.expenses[i].percentage) {
         expenseLi.textContent =
-          `${budget.expenses[i].name}: ${Math.floor(Number(budget.expenses[i].cost * check.value  / 100))}`;
+          `${budget.expenses[i].name}(${budget.expenses[i].cost}%): ${Math.floor(Number(budget.expenses[i].cost * check.value / 100))}`;
         totalCost += (Math.floor(Number(
           `${budget.expenses[i].cost * check.value / 100}`
         )));
