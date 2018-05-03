@@ -1,9 +1,9 @@
 class Expense {
-	constructor(name, cost, percentage) {
-		this.name = name;
-		this.cost = cost;
-		this.percentage = percentage;
-	}
+  constructor(name, cost, percentage) {
+    this.name = name;
+    this.cost = cost;
+    this.percentage = percentage;
+  }
 }
 
 class Store {
@@ -21,7 +21,7 @@ class Store {
   }
 
   static displayExpenses() {
-  	budget.expenses = []
+    budget.expenses = []
     const expenses = Store.getExpenses();
     expenses.forEach(function (expense, i, arr) {
       expense = new Expense;
@@ -56,7 +56,12 @@ class Store {
 
 }
 
-
+function percentageChecked() {
+  if (percentage.checked) {
+    return true;
+  }
+  return false;
+}
 
 
 let check = document.querySelector('#check');
@@ -66,42 +71,55 @@ let weekly = document.querySelector('#weekly');
 let expenseName = document.querySelector('#expenseName');
 let expenseCost = document.querySelector('#expenseCost');
 let percentage = document.querySelector('#percentage')
-let add = document.querySelector('#add');	
-let remove = document.querySelector('#remove');	
+let add = document.querySelector('#add'); 
+let remove = document.querySelector('#remove'); 
 
 
 let budget = {
-	expenses: [],
+  expenses: [],
 
-	addEditExpense: function() {
-		let expense;
+  addEditExpense: function () {
+  let expense;
+  // debugger;
+  if (!expenseCost.value || !expenseName.value) {
+    alert('Please Add Expense Name and Cost')
+    return;
+  } else {
+    if (budget.expenses.length > 0) {
+      for (let i = 0; i < budget.expenses.length; i++) {
+        if (expenseName.value === budget.expenses[i].name) {
+          budget.expenses.splice(i, 1);
+          Store.removeExpense(expenseName.value)
+        }
+      }
+      expense = new Expense(expenseName.value, Number(
+        expenseCost.value), percentageChecked())
 
-    if (percentage.checked) {
-    	expense = new Expense(expenseName.value, Number(expenseCost.value), true)
-    }else{
-    	expense = new Expense(expenseName.value, Number(expenseCost.value), false)
     }
+
     expenseName.value = ''
     expenseCost.value = ''
-    budget.expenses.push(expense);
     Store.addExpense(expense)
+    budget.expenses.push(expense);
+    Store.displayExpenses();
     // console.log(budget.expenses);
     view.displayBudget();
     percentage.checked = false;
-		
-     },
+    expenseName.focus()
+  }
+},
 
   deleteExpense: function() {
     let expenseName = document.querySelector('#expenseName');
     for (let i = 0; i < budget.expenses.length; i++) {
-   		if (expenseName.value === budget.expenses[i].name){
-   			budget.expenses.splice(i, 1);
-   			Store.removeExpense(expenseName.value)
-   		}
+      if (expenseName.value === budget.expenses[i].name){
+        budget.expenses.splice(i, 1);
+        Store.removeExpense(expenseName.value)
+      }
     }
     expenseName.value = '';
     // console.log(budget.expenses);
-		view.displayBudget();
+    view.displayBudget();
   },
 };
 
@@ -120,7 +138,7 @@ view = {
     Store.displayExpenses();
 
     budget.expenses.forEach(function (expense, i) {
-    	Store.displayExpenses();
+      Store.displayExpenses();
       let expenseLi = document.createElement('li');
 
       expenseLi.id = i;
@@ -160,7 +178,7 @@ view = {
     let leftOver = document.createElement('li');
     leftOver.textContent = `Left Over: ${check.value - totalCost}`;
     expensesUl.appendChild(leftOver);
-	
+  
 
   }
 }
@@ -177,3 +195,23 @@ biWeekly.addEventListener('click', view.displayBudget)
 weekly.addEventListener('click', view.displayBudget)
 
 monthly.addEventListener('click', view.displayBudget)
+
+
+check.addEventListener('keypress', function(e) {
+  if (e.keyCode === 13) {
+    budget.visualizeBudget();
+  }
+});
+
+expenseCost.addEventListener('keypress', function(e) {
+  if (e.keyCode === 13) {
+    budget.addEditExpense();
+  }
+});
+
+
+expenseName.addEventListener('keypress', function(e) {
+  if (e.keyCode === 13) {
+    expenseCost.focus();
+  }
+});
